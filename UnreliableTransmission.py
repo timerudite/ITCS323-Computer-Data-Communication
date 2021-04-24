@@ -1,6 +1,9 @@
 import random
 
 
+import random
+
+
 def unreliable_transmission(bit, p):
     x = [0]*len(bit)
     y = ["0"]*len(bit)
@@ -19,26 +22,41 @@ def unreliable_transmission(bit, p):
             # end if
             count += 1
         # end if
-    # print(y)
+    print(y)
     return count
-
-
-print(unreliable_transmission("10010001", 0.05))
-print(unreliable_transmission("10010001", 0.1))
-print(unreliable_transmission("10010001", 0.2))
+# end function
 
 
 def tester(bit, p):
     infty = 100
     count = 0
     for i in range(infty):
+        print("Round: {}".format(i+1))
         corrupt = unreliable_transmission(bit, p)
         count = count + corrupt
     # all number of corrupt / (number of bits * 100 time)
     ratio = count/(100*len(bit))
+    print("Average ratio of erroneous bits and total number of bits for {}: ".format(p))
     return ratio
+# end function
 
 
+print("Output feild\n\n")
+print("These are the result\n")
+print(unreliable_transmission("10010001", 0.05))
+print(unreliable_transmission("10010001", 0.1))
+print(unreliable_transmission("10010001", 0.2))
+
+print("Testing feild")
+print("inframe = 10010001, p = 0.05\n")
 print(tester("10010001", 0.05))
+
+print("\n\n")
+
+print("inframe = 10010001, p = 0.1\n")
 print(tester("10010001", 0.1))
+
+print("\n\n")
+
+print("inframe = 10010001, p = 0.2\n")
 print(tester("10010001", 0.2))

@@ -1,9 +1,4 @@
 import random
-
-
-import random
-
-
 def unreliable_transmission(bit, p):
     x = [0]*len(bit)
     y = ["0"]*len(bit)
